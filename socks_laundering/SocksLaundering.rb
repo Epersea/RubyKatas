@@ -18,15 +18,15 @@ class SocksLaundering
 
     def findPairsOfCleanSocks
       clean_socks_by_color = group_socks(@clean) 
-      #Iterates hash detecting pairs and deleting them from array
+      # Iterates hash detecting pairs and deleting them from array
       clean_socks_by_color.each{ |color, freq|
         if freq % 2 == 0
-          @clean_pairs += freq / 2
+          @clean_pairs += freq / 2 # We don't need to worry about capacity here, so we match all available socks at once
           @clean.delete(color)
         elsif freq > 2
           @clean_pairs += freq / 2
           @clean.delete(color) 
-          @clean.push(color) #pushes the odd sock remaining to the clean array so it can be matched later
+          @clean.push(color) # Pushes the odd sock remaining to the clean array so it can be matched later
         end
       }
     end
@@ -36,11 +36,11 @@ class SocksLaundering
       @dirty.each{ | dirty_sock |
         if clean_sock == dirty_sock
           @clean_pairs += 1
-          @dirty.delete_at(@dirty.index(dirty_sock)) #deletes matched dirty sock to avoid repeats
+          @dirty.delete_at(@dirty.index(dirty_sock)) # Deletes matched dirty sock to avoid repeats
           @capacity -= 1
           if @capacity == 0
             return
-          next #goes to next loop iteration to avoid matching the same clean sock several times
+          next # Goes to next loop iteration to avoid matching the same clean sock several times
           end
         end
       }
@@ -48,14 +48,14 @@ class SocksLaundering
     end
 
     def findPairsOfDirtySocks
-        dirty_socks_by_color = group_socks(@dirty)
-        dirty_socks_by_color.each{ |color, freq|
-        while freq >= 2 && @capacity >= 2 do
+      dirty_socks_by_color = group_socks(@dirty)
+      dirty_socks_by_color.each{ |color, freq|
+        while freq >= 2 && @capacity >= 2 do # Works one pair at a time to maximize capacity usage
           @clean_pairs += 1
           freq -=2
           @capacity -= 2
         end
-        }
+      }
     end
 
     def group_socks(socks)

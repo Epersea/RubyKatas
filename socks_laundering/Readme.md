@@ -15,9 +15,10 @@ When designing the test, I included the three main functionalities along the fol
 - The socks that are already paired and clean should be deleted from the original arrays, so they aren't counted twice.
 - Washing machine capacity should be reduced with each sock it cleans.
 - The program should stop matching socks when there is no washing machine capacity left.
-In the end, I feel that the steps between passing a test and implementing the following one where still quite big, but I'm not sure if this is due to the test methodology or because I'm working with a new-to-me language such as Ruby.
 
-# Next steps
+In the end, I feel that the steps between passing a test and implementing the following one were still quite big, but I'm not sure if this is due to the test methodology or because I'm working with a new-to-me language such as Ruby.
+
+# Next steps?
 - Try to find more edge cases to test and make sure the solution is correct.
 - Refactor as I learn more Ruby! In particular, I'd like to find a solution that doesn't mutate the class properties.
 

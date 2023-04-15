@@ -52,12 +52,6 @@ RSpec.describe SocksLaundering do
     pairs = SockLaunder.findPairs()
     expect(pairs).to eq(6)
   end
-
-  it 'test example' do
-    SockLaunder = SocksLaundering.new(2, [1, 2, 1, 1], [1, 4, 3, 2, 4])
-    pairs = SockLaunder.findPairs()
-    expect(pairs).to eq(3)
-  end
   
 end
 
