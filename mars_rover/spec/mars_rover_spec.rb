@@ -5,7 +5,7 @@ RSpec.describe MarsRover do
         landing_zone = '5, 5, N'
         mars_rover = MarsRover.new(landing_zone)
 
-        expect(mars_rover.landing_zone).to eq(landing_zone)
+        expect(mars_rover.position).to eq(landing_zone)
     end
 
     it 'knows how to move forward' do
@@ -15,6 +15,6 @@ RSpec.describe MarsRover do
         mars_rover.move('MMM')
 
         final_position = '1, 5, N'
-        expect(mars_rover.position).to_eq(final_position)
+        expect(mars_rover.position).to eq(final_position)
     end
 end
