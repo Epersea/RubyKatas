@@ -1,5 +1,4 @@
-require '/Users/elisafernandezvic/Desktop/CODING/ruby_katas/socks_laundering/SocksLaundering.rb' 
-
+require_relative '../sock_laundering'
 RSpec.describe SocksLaundering do
 
   it 'finds pairs of clean socks' do
