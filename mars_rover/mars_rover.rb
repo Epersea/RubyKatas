@@ -22,7 +22,7 @@ class MarsRover
         orders = command.split("")
         orders.each do |order|
             if order == "M"
-                @position[1] += 1
+                move_forward
             end
 
             if order == "R"
@@ -32,6 +32,18 @@ class MarsRover
             if order == "L"
                 move_left
             end
+        end
+    end
+
+    def move_forward
+        if @position[2] == "N"
+            @position[1] += 1
+        elsif @position[2] == "S"
+            @position[1] -= 1
+        elsif @position[2] == "E"
+            @position[0] += 1
+        elsif @position[2] == "W"
+            @position[0] -= 1
         end
     end
 
