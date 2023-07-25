@@ -28,6 +28,10 @@ class MarsRover
             if order == "R"
                 move_right
             end
+
+            if order == "L"
+                move_left
+            end
         end
     end
 
@@ -37,6 +41,12 @@ class MarsRover
         if cardinal_index > 3
             cardinal_index = 0
         end
+        @position[2] = CARDINAL_POINTS[cardinal_index]
+    end
+
+    def move_left
+        cardinal_index = CARDINAL_POINTS.index(@position[2])
+        cardinal_index = cardinal_index -= 1
         @position[2] = CARDINAL_POINTS[cardinal_index]
     end
 
