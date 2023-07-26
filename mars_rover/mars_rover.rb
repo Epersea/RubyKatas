@@ -9,13 +9,17 @@ class MarsRover
 
     def operable_landing_zone(landing_zone)
         landing_zone = landing_zone.split(", ")
-        landing_zone[0] = landing_zone[0].to_i
-        landing_zone[1] = landing_zone[1].to_i
-        landing_zone
+        operable_landing_zone = {
+            east_west: landing_zone[0].to_i,
+            north_south: landing_zone[1].to_i,
+            orientation: landing_zone[2]
+        }
+
+        operable_landing_zone
     end
 
     def position
-        @position.join(", ")
+        "#{@position[:east_west]}, #{@position[:north_south]}, #{@position[:orientation]}"
     end
 
     def move(command)
@@ -36,30 +40,30 @@ class MarsRover
     end
 
     def move_forward
-        if @position[2] == "N"
-            @position[1] += 1
-        elsif @position[2] == "S"
-            @position[1] -= 1
-        elsif @position[2] == "E"
-            @position[0] += 1
-        elsif @position[2] == "W"
-            @position[0] -= 1
+        if @position[:orientation] == "N"
+            @position[:north_south] += 1
+        elsif @position[:orientation] == "S"
+            @position[:north_south] -= 1
+        elsif @position[:orientation] == "E"
+            @position[:east_west] += 1
+        elsif @position[:orientation] == "W"
+            @position[:east_west] -= 1
         end
     end
 
     def move_right
-        cardinal_index = CARDINAL_POINTS.index(@position[2])
+        cardinal_index = CARDINAL_POINTS.index(@position[:orientation])
         cardinal_index = cardinal_index += 1
         if cardinal_index > 3
             cardinal_index = 0
         end
-        @position[2] = CARDINAL_POINTS[cardinal_index]
+        @position[:orientation] = CARDINAL_POINTS[cardinal_index]
     end
 
     def move_left
-        cardinal_index = CARDINAL_POINTS.index(@position[2])
+        cardinal_index = CARDINAL_POINTS.index(@position[:orientation])
         cardinal_index = cardinal_index -= 1
-        @position[2] = CARDINAL_POINTS[cardinal_index]
+        @position[:orientation] = CARDINAL_POINTS[cardinal_index]
     end
 
 end
