@@ -7,17 +7,6 @@ class MarsRover
         @position = to_dictionary(@landing_zone)
     end
 
-    def to_dictionary(zone)
-        zone = zone.split(", ")
-        zone_to_dictionary = {
-            west_east: zone[0].to_i,
-            south_north: zone[1].to_i,
-            orientation: zone[2]
-        }
-
-        zone_to_dictionary
-    end
-
     def position
         "#{@position[:west_east]}, #{@position[:south_north]}, #{@position[:orientation]}"
     end
@@ -39,25 +28,54 @@ class MarsRover
         end
     end
 
+    private
+
+    def to_dictionary(zone)
+        zone = zone.split(", ")
+        zone_to_dictionary = {
+            west_east: zone[0].to_i,
+            south_north: zone[1].to_i,
+            orientation: zone[2]
+        }
+
+        zone_to_dictionary
+    end
+
     def move_forward
         if @position[:orientation] == "N"
-            @position[:south_north] += 1
+            move_north
         elsif @position[:orientation] == "S"
-            @position[:south_north] -= 1
+            move_south
         elsif @position[:orientation] == "E"
-            @position[:west_east] += 1
+            move_east
         elsif @position[:orientation] == "W"
-            @position[:west_east] -= 1
+            move_west
         end
+    end
+
+    def move_north
+        @position[:south_north] += 1
+    end
+
+    def move_south
+        @position[:south_north] -= 1
+    end
+
+    def move_east
+        @position[:west_east] += 1
+    end
+
+    def move_west
+        @position[:west_east] -= 1
     end
 
     def rotate(direction)
         cardinal_index = CARDINAL_POINTS.index(@position[:orientation])
 
         if direction == "right"
-            cardinal_index = cardinal_index - 3
+            !cardinal_index -= 3
         elsif direction == "left"
-            cardinal_index = cardinal_index - 1
+            !cardinal_index -= 1
         end
 
         @position[:orientation] = CARDINAL_POINTS[cardinal_index]
