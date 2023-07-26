@@ -12,7 +12,7 @@ RSpec.describe MarsRover do
         landing_zone = '1, 2, N'
         mars_rover = MarsRover.new(landing_zone)
 
-        mars_rover.move('MMM')
+        mars_rover.execute('MMM')
 
         final_position = '1, 5, N'
         expect(mars_rover.position).to eq(final_position)
@@ -22,7 +22,7 @@ RSpec.describe MarsRover do
         landing_zone = '1, 2, N'
         mars_rover = MarsRover.new(landing_zone)
 
-        mars_rover.move('R')
+        mars_rover.execute('R')
 
         final_position = '1, 2, E'
         expect(mars_rover.position).to eq(final_position)
@@ -32,7 +32,7 @@ RSpec.describe MarsRover do
         landing_zone = '1, 2, N'
         mars_rover = MarsRover.new(landing_zone)
 
-        mars_rover.move('L')
+        mars_rover.execute('L')
 
         final_position = '1, 2, W'
         expect(mars_rover.position).to eq(final_position)
@@ -42,7 +42,7 @@ RSpec.describe MarsRover do
         landing_zone = '1, 2, N'
         mars_rover = MarsRover.new(landing_zone)
 
-        mars_rover.move('RM')
+        mars_rover.execute('RM')
 
         final_position = '2, 2, E'
         expect(mars_rover.position).to eq(final_position)
@@ -52,7 +52,7 @@ RSpec.describe MarsRover do
         landing_zone = '1, 2, N'
         mars_rover = MarsRover.new(landing_zone)
 
-        mars_rover.move('RMMLLM')
+        mars_rover.execute('RMMLLM')
 
         final_position = '2, 2, W'
         expect(mars_rover.position).to eq(final_position)
