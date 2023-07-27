@@ -38,7 +38,7 @@ RSpec.describe MarsRover do
         expect(mars_rover.position).to eq(final_position)
     end
 
-    it 'moves in the right direction after turning right' do
+    it 'moves in the right direction after turning' do
         landing_zone = '1, 2, N'
         mars_rover = MarsRover.new(landing_zone)
 
