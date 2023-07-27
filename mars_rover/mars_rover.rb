@@ -18,12 +18,8 @@ class MarsRover
                 move_forward
             end
 
-            if order == "R"
-                rotate("right")
-            end
-
-            if order == "L"
-                rotate("left")
+            if order == "R" || "L"
+                rotate(order)
             end
         end
     end
@@ -72,9 +68,9 @@ class MarsRover
     def rotate(direction)
         cardinal_index = CARDINAL_POINTS.index(@position[:orientation])
 
-        if direction == "right"
+        if direction == "R"
             !cardinal_index -= 3
-        elsif direction == "left"
+        elsif direction == "L"
             !cardinal_index -= 1
         end
 
