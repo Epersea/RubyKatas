@@ -1,0 +1,3 @@
+In March 2023, I accepted an internship in a new-to-me language, Ruby. A few months later, this turned into my first software developer position.
+
+This repo contains a series of katas in that language which were done during this internship. The main goals for these were adquiring more fluency in the language and practising test-driven development, object-oriented programming and best practices. Please see readme files in each kata for more details.
